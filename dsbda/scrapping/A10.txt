@@ -1,0 +1,72 @@
+---
+
+### 🔍 **Part 1: Web Scraping**
+
+#### Modules Used:
+
+* `requests`: to send HTTP GET requests.
+* `BeautifulSoup` (`bs4`): to parse and extract data from HTML.
+* `pandas`: to organize and save data in a tabular format.
+
+#### Process:
+
+1. **Initialize Lists**:
+
+   * `titles`, `ratings`, `prices`: store book data.
+
+2. **Rating Conversion Map**:
+
+   * `rating_map` maps word-based ratings ("One", "Two", etc.) to numerical values.
+
+3. **Loop through 50 pages** of the book site:
+
+   ```python
+   for page in range(1, 51):
+   ```
+
+   * Constructs each page URL.
+   * Sends request and parses the HTML using BeautifulSoup.
+
+4. **Extract book data**:
+
+   * Each book is in an `<article class="product_pod">`.
+   * Extract:
+
+     * `title`: from `book.h3.a['title']`
+     * `price`: from `<p class="price_color">`, stripped of '£'
+     * `rating`: from the class name, e.g., `<p class="star-rating Three">` → extract "Three"
+
+5. **Append parsed data** to the lists.
+
+6. **Create DataFrame**:
+
+   ```python
+   df = pd.DataFrame({
+       "Title": titles,
+       "Rating": ratings,
+       "Price (£)": prices
+   })
+   ```
+
+   * Then save it to a CSV file: `books_scraped.csv`.
+
+---
+
+### 📊 **Part 2: Data Loading & Cleaning**
+
+```python
+df = pd.read_csv("books_scraped.csv")
+```
+
+* Ensures:
+
+  * `Rating` is integer.
+  * `Price (£)` is numeric (in case of invalid entries).
+  * `df.head()` shows the first few rows for inspection.
+
+---
+
+### ✅ **Result**:
+
+You now have a structured dataset of **book titles, ratings, and prices** scraped from 1000 books (20 per page × 50 pages) and saved to CSV, ready for analysis or visualization.
+
