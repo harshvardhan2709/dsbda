@@ -1,0 +1,32 @@
+a. Data Cleaning
+Covered:
+df = df.drop_duplicates(): Removal of duplicate rows.
+df = df.dropna(): Removal of rows with missing values after outlier handling.
+Outlier Removal: The remove_outliers function is used to clean several columns (cp, thal, exang, oldpeak, slope, ca).
+df = df.drop('fbs', axis=1): Dropping the 'fbs' column.
+
+b. Data Integration
+Covered:
+merged_df = subSet1.merge(right=subSet2, how='cross'): This performs a cross-join between two subsets of the DataFrame. This is a form of data integration, although a cross join produces all possible combinations of rows, which might not always be the most practical integration method.
+
+c. Data Transformation
+Covered:
+Outlier Removal: As in the previous notebook, this transforms the distribution of the selected features.
+StandardScaler(): Scaling of the features in the training and testing sets to have zero mean and unit variance.
+
+d. Error Correcting
+Partially Covered:
+Missing Value Handling: Handled by dropna() after outlier removal. This implies that missing values might have been introduced by the outlier removal process.
+Outlier Removal: As discussed before, this can correct errors if outliers represent invalid data.
+Missing: Similar to the previous notebook, there's no explicit data validation against rules or external sources.
+
+e. Data Model Building
+Covered:
+The notebook builds and compares two classification models:
+LogisticRegression()
+DecisionTreeClassifier()
+It includes:
+Data Splitting (train_test_split)
+Model Training (model.fit(), tc.fit())
+Prediction (model.predict(), tc.predict())
+Evaluation (accuracy_score, confusion_matrix)
