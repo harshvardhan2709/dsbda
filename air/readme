@@ -1,0 +1,33 @@
+a. Data Cleaning
+
+Covered: Yes, your notebook includes several data cleaning steps:
+df = df.drop_duplicates(): Removal of duplicate rows.
+df = df.drop(['AQI_Bucket'], axis=1): Dropping a column.
+df.fillna(): Handling missing values (imputation with mode for categorical and mean for numerical columns).
+Outlier Removal: You've defined a function remove_outliers and applied it to several numeric columns.
+df = df.dropna(): Dropping rows with any remaining NaN values
+df.columns = df.columns.str.strip().str.lower(): Cleaning column names
+
+b. Data Integration
+Covered: Yes, there is one instance of Data Integration.
+concatenated_df = pd.concat([subSet1, subSet2], axis=1): This line concatenates two subsets of the DataFrame (subSet1 and subSet2) horizontally. This is a basic form of data integration.
+
+c. Data Transformation
+Covered: Yes, your notebook performs data transformation:
+LabelEncoder(): Conversion of categorical variables ('City', 'Date') into numerical representations.
+Outlier Removal: While also a cleaning step, removing outliers transforms the distribution of the data.
+
+d. Error Correcting
+Partially Covered:
+Missing Value Imputation: Filling missing values can be seen as a form of error correction, as it addresses the error of having incomplete data.
+Outlier Removal: Outliers can sometimes be erroneous data points, and removing them can be considered error correction.
+However, your notebook doesn't include explicit steps to validate data against known rules or external sources, or to correct inconsistencies based on domain knowledge.
+                                      
+e. Data Model Building
+Covered: Yes, the notebook includes building a Linear Regression model.
+The code performs:
+Data Splitting (train_test_split)
+Model Training (model.fit())
+Prediction (model.predict())
+Evaluation (mean_squared_error, r2_score)
+                                      

@@ -1,0 +1,4 @@
+code for reshape :
+
+reshaped_df = df.pivot_table(index='Type', columns='Category', values='like', aggfunc='mean')
+print("\nReshaped Data using Pivot Table:\n", reshaped_df)
